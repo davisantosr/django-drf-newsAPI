@@ -94,6 +94,11 @@ class ArticleDetailAPIView(APIView):
     article.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
 
+  def get(self, request, pk):
+    article = self.get_object(pk)
+    serializer = ArticleSerializer(article)
+    return Response(serializer.data)
+
 
 
 
